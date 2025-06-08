@@ -1,4 +1,5 @@
 import { Pool, PoolConfig } from 'pg';
+import { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD } from '../const';
 
 // Конфигурация PostgreSQL
 export interface DatabaseConfig extends PoolConfig {
@@ -10,11 +11,11 @@ export interface DatabaseConfig extends PoolConfig {
 }
 
 export const databaseConfig: DatabaseConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5432'),
-  database: process.env.DB_NAME || 'nailmasters',
-  user: process.env.DB_USER || 'username',
-  password: process.env.DB_PASSWORD || 'password',
+  host: DB_HOST || 'localhost',
+  port: parseInt(DB_PORT || '5432'),
+  database: DB_NAME || 'nailmasters',
+  user: DB_USER || 'postgres',
+  password: DB_PASSWORD || 'password',
   max: 20, // максимальное количество соединений в пуле
   idleTimeoutMillis: 30000, // время ожидания перед закрытием неактивного соединения
   connectionTimeoutMillis: 2000, // время ожидания подключения

@@ -41,9 +41,10 @@ export interface CreateUserData {
   password: string;
   name: string;
   phone: string;
-  type: UserType;
+  role: UserType; // Роль пользователя: client, master, admin
   location?: string;
   specialties?: string[];
+  rootPassword?: string; // Обязательно для роли admin
 }
 
 export interface LoginCredentials {
